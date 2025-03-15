@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Alumnos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <%- include('partials/header') %>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Detalle de Alumnos</h1>
+        <table class="table table-bordered table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Matrícula</th>
+                    <th>Nombre</th>
+                    <th>Nivel</th>
+                    <th>Turno</th>
+                    <th>Promedio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% alumnos.forEach(alumno => { %>
+                    <tr>
+                        <td><%= alumno.matricula %></td>
+                        <td><%= alumno.nombre %></td>
+                        <td>
+                            <% if (alumno.nivel === 1) { %>
+                                Primaria
+                            <% } else if (alumno.nivel === 2) { %>
+                                Secundaria
+                            <% } else if (alumno.nivel === 3) { %>
+                                Preparatoria
+                            <% } %>
+                        </td>
+                        <td>
+                            <% if (alumno.turno === 1) { %>
+                                Matutino
+                            <% } else if (alumno.turno === 2) { %>
+                                Vespertino
+                            <% } %>
+                        </td>
+                        <td><%= alumno.promedio %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Volver</a>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
